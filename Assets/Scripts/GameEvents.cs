@@ -6,4 +6,6 @@ using UnityEngine;
 public class GameEvents
 {
     public static Action<int> ExpandCrowd;
+
+    public static Action<bool> StopPlayerMovement;
 }

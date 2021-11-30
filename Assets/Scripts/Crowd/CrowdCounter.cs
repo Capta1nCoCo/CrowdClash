@@ -9,18 +9,23 @@ public class CrowdCounter : MonoBehaviour
     [SerializeField] private TextMeshPro crowdCounterText;
 
     private int _memberCounter;
-    
+
     private void Awake()
     {
-        UpdateMemberCounter(1);
+        UpdateCrowdCounterText();
     }
 
+    public bool EqualsZero()
+    {
+        return _memberCounter <= 0;
+    }
+    
     public void UpdateMemberCounter(int amount)
     {
         _memberCounter += amount;
         UpdateCrowdCounterText();
     }
-    
+
     private void UpdateCrowdCounterText()
     {
         crowdCounterText.text = _memberCounter.ToString();

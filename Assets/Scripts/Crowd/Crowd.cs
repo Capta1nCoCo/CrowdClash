@@ -16,8 +16,10 @@ public class Crowd : MonoBehaviour
 
    [Header("Enemy Settings:")]
    [SerializeField] private int crowdSize;
+   [SerializeField] private EnemyZone enemyZone;
    
    [Header("[DO NOT TOUCH]")]
+   [SerializeField] private CrowdMember[] zeroCircle;
    [SerializeField] private CrowdMember[] firstCircle;
    [SerializeField] private CrowdMember[] secondCircle;
    [SerializeField] private CrowdMember[] thirdCircle;
@@ -43,6 +45,7 @@ public class Crowd : MonoBehaviour
       if (type == CrowdType.Player)
       {
          GameEvents.ExpandCrowd += ExpandCrowd;
+         ExpandCrowd(1);
       }
       else
       {
@@ -58,8 +61,18 @@ public class Crowd : MonoBehaviour
       }
    }
 
+   public void KillCrowd()
+   {
+      gameObject.SetActive(false);
+      if (enemyZone != null)
+      {
+         enemyZone.TellThatCrowdIsDead();
+      }
+   }
+   
    private void FormListOfCircles()
    {
+      _allCircles.Add(zeroCircle);
       _allCircles.Add(firstCircle);
       _allCircles.Add(secondCircle);
       _allCircles.Add(thirdCircle);
@@ -88,7 +101,7 @@ public class Crowd : MonoBehaviour
             }
          }
       }
-
+      
       _crowdCounter.UpdateMemberCounter(addedMembers);
    }
 }

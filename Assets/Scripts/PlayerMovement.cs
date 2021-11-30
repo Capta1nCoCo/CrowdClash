@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speedModifier = 2.5f;
     [SerializeField] private float gravity = -9.8f;
+
+    private bool _stoppedMoving;
     
     private Touch _touch;
     private CharacterController _characterController;
@@ -17,14 +19,30 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
+        _stoppedMoving = false;
+
+        GameEvents.StopPlayerMovement += StopPlayerMovement;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.StopPlayerMovement -= StopPlayerMovement;
     }
 
     void FixedUpdate()
     {
-        ApplyForwardMovement();
-        ProcessHorizontalMovement();
+        if (!_stoppedMoving)
+        {
+            ApplyForwardMovement();
+            ProcessHorizontalMovement();
+        }
     }
 
+    public void StopPlayerMovement(bool confirm)
+    {
+        _stoppedMoving = confirm;
+    }
+    
     private void ApplyForwardMovement()
     {
         _characterController.Move(Vector3.forward * speedModifier * Time.deltaTime);
