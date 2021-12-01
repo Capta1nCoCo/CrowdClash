@@ -69,7 +69,7 @@ public class Gateway : MonoBehaviour
                 break;
             
             case '*':
-                _amountAfterCalculation = crowdSize * amount;
+                _amountAfterCalculation = crowdSize * amount - crowdSize;
                 break;
             
             case '-':

@@ -1414,7 +1414,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5535270925858037927, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
       propertyPath: amount
-      value: 60
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5535270925858037927, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
+      propertyPath: operationSign
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9036212797729413960, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
       propertyPath: m_RootOrder
