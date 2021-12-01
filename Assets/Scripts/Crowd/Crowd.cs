@@ -44,12 +44,12 @@ public class Crowd : MonoBehaviour
       
       if (type == CrowdType.Player)
       {
-         GameEvents.ExpandCrowd += ExpandCrowd;
-         ExpandCrowd(1);
+         GameEvents.ChangeCrowdSize += ChangeCrowdSize;
+         ChangeCrowdSize(1);
       }
       else
       {
-         ExpandCrowd(crowdSize);
+         ChangeCrowdSize(crowdSize);
       }
    }
    
@@ -57,7 +57,7 @@ public class Crowd : MonoBehaviour
    {
       if (type == CrowdType.Player)
       {
-         GameEvents.ExpandCrowd -= ExpandCrowd;
+         GameEvents.ChangeCrowdSize -= ChangeCrowdSize;
       }
    }
 
@@ -66,7 +66,12 @@ public class Crowd : MonoBehaviour
       gameObject.SetActive(false);
       if (enemyZone != null)
       {
-         enemyZone.TellThatCrowdIsDead();
+         enemyZone.RemoveEnemyZone();
+      }
+
+      if (type == CrowdType.Player)
+      {
+         GameEvents.GameOver();
       }
    }
    
@@ -84,10 +89,42 @@ public class Crowd : MonoBehaviour
       _allCircles.Add(ninthCircle);
    }
    
+   private void ChangeCrowdSize(int amount)
+   {
+      if (amount < 0)
+      {
+         ShrinkCrowd(amount);
+      }
+      else
+      {
+         ExpandCrowd(amount);
+      }
+   }
+
+   private void ShrinkCrowd(int amount)
+   {
+      var removedMembers = 0;
+      var amountAbs = Mathf.Abs(amount);
+      for (int i = _allCircles.Count-1; i >= 0; i--)
+      {
+         var circle = _allCircles[i];
+         foreach (var crowdMember in circle)
+         {
+            var comp = crowdMember.gameObject;
+            if (removedMembers == amountAbs) { break; }
+            if (comp.activeSelf)
+            {
+               comp.SetActive(false);
+               removedMembers++;
+            }
+         }
+      }
+      _crowdCounter.UpdateMemberCounter(-removedMembers);
+   }
+
    private void ExpandCrowd(int amount)
    {
       var addedMembers = 0;
-
       foreach (var circle in _allCircles)
       {
          foreach (var crowdMember in circle)
@@ -101,7 +138,7 @@ public class Crowd : MonoBehaviour
             }
          }
       }
-      
       _crowdCounter.UpdateMemberCounter(addedMembers);
    }
+   
 }

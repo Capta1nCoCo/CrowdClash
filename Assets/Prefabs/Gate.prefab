@@ -110,8 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8fa20df3880de488a30388e76778be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 0
+  gateKeeper: {fileID: 0}
   gateText: {fileID: 5736860805308896930}
+  operationSign: 0
+  amount: 0
+  materials:
+  - {fileID: 2100000, guid: f919c22fc7f41224abbd31553dd7aa5b, type: 2}
+  - {fileID: 2100000, guid: a918e03a5f6a53e4fba7ed8f55cbee69, type: 2}
 --- !u!1 &1615854667795112233
 GameObject:
   m_ObjectHideFlags: 0

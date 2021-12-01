@@ -12,14 +12,14 @@ public class CrowdMember : MonoBehaviour
     
     private Renderer _renderer;
     private Crowd _crowd;
-    private CrowdCounter _crowdCounter;
+    public CrowdCounter MyCrowdCounter { get; private set; }
 
     
     private void Awake()
     {
         _renderer = GetComponent<MeshRenderer>();
         _crowd = GetComponentInParent<Crowd>();
-        _crowdCounter = GetComponentInParent<CrowdCounter>();
+        MyCrowdCounter = GetComponentInParent<CrowdCounter>();
 
         if (_crowd.MyCrowdType == Crowd.CrowdType.Enemy)
         {
@@ -45,13 +45,13 @@ public class CrowdMember : MonoBehaviour
     private void Die()
     {
         gameObject.SetActive(false);
-        _crowdCounter.UpdateMemberCounter(-1);
+        MyCrowdCounter.UpdateMemberCounter(-1);
         CheckIfCrowdDies();
     }
 
     private void CheckIfCrowdDies()
     {
-        if (_crowdCounter.EqualsZero())
+        if (MyCrowdCounter.EqualsZero())
         {
             _crowd.KillCrowd();
         }

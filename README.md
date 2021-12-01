@@ -1,5 +1,17 @@
 # CrowdClash
 
+# December/1/2021
+
+Gateway:
+- Added Multiply Mechanic 
+- Added Substraction Mechanic
+
+Enemy:
+- Revorked EnemyMovement (CharacterController -> NavMeshAgent)
+
+UI:
+- Added Win/Lose Screen & Mechanic
+
 # November/30/2021
 
 - Added Enemy Zone

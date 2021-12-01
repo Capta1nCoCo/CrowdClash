@@ -9,6 +9,7 @@ public class CrowdCounter : MonoBehaviour
     [SerializeField] private TextMeshPro crowdCounterText;
 
     private int _memberCounter;
+    public int GetMemberCounter() { return _memberCounter; }
 
     private void Awake()
     {

@@ -20,7 +20,7 @@ public class EnemyZone : MonoBehaviour
         }
     }
 
-    public void TellThatCrowdIsDead()
+    public void RemoveEnemyZone()
     {
         gameObject.SetActive(false);
         GameEvents.StopPlayerMovement(false);

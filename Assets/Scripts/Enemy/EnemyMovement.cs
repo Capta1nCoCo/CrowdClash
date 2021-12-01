@@ -4,19 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 1f;
-    
     private bool _isMoving;
     
-    private CharacterController _characterController;
+    private NavMeshAgent _navMeshAgent;
     private Transform _player;
-
+    
     private void Awake()
     {
-        _characterController = GetComponent<CharacterController>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerMovement>().transform;
     }
 
@@ -24,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_isMoving)
         {
-            _characterController.Move(Vector3.back * movementSpeed * Time.deltaTime);
+            _navMeshAgent.SetDestination(_player.position);
         }
     }
 
