@@ -12,20 +12,18 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float gravity = -9.8f;
 
     private bool _stoppedMoving;
-    private float _skinWidthPerUnit;
-    
+
     private Touch _touch;
     private CharacterController _characterController;
 
     private void Awake()
     {
         _characterController = GetComponent<CharacterController>();
-        _skinWidthPerUnit = _characterController.skinWidth;
         _stoppedMoving = false;
 
         GameEvents.StopPlayerMovement += StopPlayerMovement;
     }
-
+    
     private void OnDestroy()
     {
         GameEvents.StopPlayerMovement -= StopPlayerMovement;
@@ -62,7 +60,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    
     
     private void ProcessTranslation(Touch touch)
     {

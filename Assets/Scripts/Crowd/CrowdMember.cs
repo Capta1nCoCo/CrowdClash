@@ -7,17 +7,17 @@ public class CrowdMember : MonoBehaviour
 {
     [SerializeField] private Material enemyMaterial;
     [SerializeField] private Material playerMaterial;
-
-    public bool EnemyCrowdMember { get; private set; }
+    [SerializeField] private SkinnedMeshRenderer body;
+    [SerializeField] private Animator animator;
     
-    private Renderer _renderer;
-    private Crowd _crowd;
+    public bool EnemyCrowdMember { get; private set; }
     public CrowdCounter MyCrowdCounter { get; private set; }
-
+    
+    private Crowd _crowd;
+    
     
     private void Awake()
     {
-        _renderer = GetComponent<MeshRenderer>();
         _crowd = GetComponentInParent<Crowd>();
         MyCrowdCounter = GetComponentInParent<CrowdCounter>();
 
@@ -30,7 +30,7 @@ public class CrowdMember : MonoBehaviour
     
     private void ChangeMaterialToEnemy()
     {
-        _renderer.material = enemyMaterial;
+        body.material = enemyMaterial;
     }
     
     private void OnTriggerEnter(Collider other)
@@ -48,7 +48,7 @@ public class CrowdMember : MonoBehaviour
         MyCrowdCounter.UpdateMemberCounter(-1);
         CheckIfCrowdDies();
     }
-
+    
     private void CheckIfCrowdDies()
     {
         if (MyCrowdCounter.EqualsZero())
@@ -56,4 +56,5 @@ public class CrowdMember : MonoBehaviour
             _crowd.KillCrowd();
         }
     }
+    
 }

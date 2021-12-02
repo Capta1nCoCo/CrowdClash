@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
-    [SerializeField] private Canvas levelFailedCanvas;
-    [SerializeField] private Canvas levelCompletedCanvas;
+    [SerializeField] private GameObject loseScreen;
+    [SerializeField] private GameObject winScreen;
     private int _currentSceneIndex;
     
     private void Awake()
@@ -15,8 +15,8 @@ public class SceneController : MonoBehaviour
         _currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         Time.timeScale = 1;
         
-        levelCompletedCanvas.gameObject.SetActive(false);
-        levelFailedCanvas.gameObject.SetActive(false);
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
         
         GameEvents.Victory += Victory;
         GameEvents.GameOver += GameOver;
@@ -40,13 +40,13 @@ public class SceneController : MonoBehaviour
 
     private void Victory()
     {
-        levelCompletedCanvas.gameObject.SetActive(true);
+        winScreen.SetActive(true);
         Time.timeScale = 0;
     }
     
     private void GameOver()
     {
-        levelFailedCanvas.gameObject.SetActive(true);
+        loseScreen.SetActive(true);
         Time.timeScale = 0;
     }
 }

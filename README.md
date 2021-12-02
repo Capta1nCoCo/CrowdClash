@@ -1,5 +1,10 @@
 # CrowdClash
 
+# December/2/2021
+
+- Added Stickman Model
+- Added Simple Animation
+
 # December/1/2021
 
 Gateway:

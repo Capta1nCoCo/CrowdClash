@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     
     private NavMeshAgent _navMeshAgent;
     private Transform _player;
-    
+
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
