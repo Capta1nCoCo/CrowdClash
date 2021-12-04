@@ -12,4 +12,8 @@ public class GameEvents
     public static Action GameOver;
 
     public static Action Victory;
+
+    public static Action WinAnimation;
+
+    public static Action FlyAway;
 }

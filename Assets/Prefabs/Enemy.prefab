@@ -793,7 +793,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!143 &1291022212704999394
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1067,7 +1067,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c343a6d3d2dde2a4fbedbe3f3902e89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
 --- !u!1001 &23765799436132248
 PrefabInstance:
   m_ObjectHideFlags: 0

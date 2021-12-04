@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (_isMoving)
         {
-            _navMeshAgent.SetDestination(_player.position);
+            _navMeshAgent.SetDestination(_player.position);                               
         }
     }
 
@@ -30,5 +30,5 @@ public class EnemyMovement : MonoBehaviour
     {
         transform.LookAt(_player);
         _isMoving = true;
-    }
+    }  
 }

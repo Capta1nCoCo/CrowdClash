@@ -31,4 +31,9 @@ public class CrowdCounter : MonoBehaviour
     {
         crowdCounterText.text = _memberCounter.ToString();
     }
+
+    public void RemoveCounterText()
+    {
+        crowdCounterText.gameObject.SetActive(false);
+    }
 }

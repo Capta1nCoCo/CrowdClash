@@ -1,5 +1,9 @@
 # CrowdClash
 
+# December/4/2021
+
+- Added Win Animation
+
 # December/2/2021
 
 - Added Stickman Model

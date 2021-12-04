@@ -129,7 +129,6 @@ MonoBehaviour:
   enemyMaterial: {fileID: 2100000, guid: 98a06f576893f44409b6f4355a3ffa30, type: 2}
   playerMaterial: {fileID: 2100000, guid: 6e5568b7d594e124dae81335091d836b, type: 2}
   body: {fileID: 5389507221152863986}
-  animator: {fileID: 1903496270515800435}
 --- !u!95 &1903496270515800435
 Animator:
   serializedVersion: 3

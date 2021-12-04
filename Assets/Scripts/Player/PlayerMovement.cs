@@ -9,9 +9,12 @@ using UnityEngine.EventSystems;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speedModifier = 2.5f;
-    [SerializeField] private float gravity = -9.8f;
+    [SerializeField] private float horizontalSpeed = 1f;
+    //[SerializeField] private float gravity = -9.8f;
 
     private bool _stoppedMoving;
+    private bool _isUncontrollable;
+    private bool _isFlyingAway;
 
     private Touch _touch;
     private CharacterController _characterController;
@@ -22,11 +25,13 @@ public class PlayerMovement : MonoBehaviour
         _stoppedMoving = false;
 
         GameEvents.StopPlayerMovement += StopPlayerMovement;
+        GameEvents.FlyAway += FlyAway;
     }
     
     private void OnDestroy()
     {
         GameEvents.StopPlayerMovement -= StopPlayerMovement;
+        GameEvents.FlyAway -= FlyAway;
     }
 
     private void FixedUpdate()
@@ -34,20 +39,56 @@ public class PlayerMovement : MonoBehaviour
         if (!_stoppedMoving)
         {
             ApplyForwardMovement();
-            ProcessHorizontalMovement();
+            if (!_isUncontrollable)
+            {
+                ProcessHorizontalMovement();
+            }            
+        }
+
+        if (_isFlyingAway)
+        {
+            ApplyUpwardMovement();
         }
     }
     
     private void StopPlayerMovement(bool confirm)
     {
         _stoppedMoving = confirm;
+        ResetHorizontalPosition();
     }
-    
+
+    public void StopPlayersControl()
+    {
+        _isUncontrollable = true;
+        DoubleSpeedModifier();
+    }
+
+    private void DoubleSpeedModifier()
+    {
+        speedModifier += speedModifier;
+    }
+
+    private void FlyAway()
+    {
+        _isFlyingAway = true;
+    }
+
+    private void ResetHorizontalPosition()
+    {
+        transform.position = new Vector3(0, transform.position.y, transform.position.z);
+    }
+
     private void ApplyForwardMovement()
     {
         _characterController.Move(Vector3.forward * speedModifier * Time.deltaTime);
     }
-    
+
+    private void ApplyUpwardMovement()
+    {
+        _characterController.Move(Vector3.up * speedModifier * Time.deltaTime);
+    }
+      
+
     private void ProcessHorizontalMovement()
     {
         if (Input.touchCount > 0)
@@ -63,12 +104,12 @@ public class PlayerMovement : MonoBehaviour
     
     private void ProcessTranslation(Touch touch)
     {
-        var deltaX = touch.deltaPosition.x * speedModifier;
+        var deltaX = touch.deltaPosition.x * horizontalSpeed;
 
         Vector3 movement = new Vector3(deltaX, 0, 0);
-        movement = Vector3.ClampMagnitude(movement, speedModifier);
+        movement = Vector3.ClampMagnitude(movement, horizontalSpeed);
 
-        movement.y = gravity;
+        //movement.y = gravity;
         
         movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
