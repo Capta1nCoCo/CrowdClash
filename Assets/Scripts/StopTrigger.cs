@@ -8,6 +8,6 @@ public class StopTrigger : MonoBehaviour
     {
         GameEvents.StopPlayerMovement(true);
         gameObject.SetActive(false);
-        GameEvents.FlyAway();        
+        GameEvents.FlyAway(true);        
     }
 }

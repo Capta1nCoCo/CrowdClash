@@ -10,11 +10,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speedModifier = 2.5f;
     [SerializeField] private float horizontalSpeed = 1f;
-    //[SerializeField] private float gravity = -9.8f;
+    [SerializeField] private float gravity = 5f;
 
     private bool _stoppedMoving;
     private bool _isUncontrollable;
     private bool _isFlyingAway;
+    private float _groundedPos;
 
     private Touch _touch;
     private CharacterController _characterController;
@@ -23,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController = GetComponent<CharacterController>();
         _stoppedMoving = false;
+        _groundedPos = transform.position.y;
 
         GameEvents.StopPlayerMovement += StopPlayerMovement;
         GameEvents.FlyAway += FlyAway;
@@ -38,17 +40,22 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_stoppedMoving)
         {
-            ApplyForwardMovement();
+            ApplyForwardMovement();            
             if (!_isUncontrollable)
             {
-                ProcessHorizontalMovement();
-            }            
+                ProcessHorizontalMovement();                
+            }
+            
+            if (!_isFlyingAway && transform.position.y > _groundedPos)
+            {
+                ApplyGravity();
+            }
         }
 
         if (_isFlyingAway)
         {
             ApplyUpwardMovement();
-        }
+        }        
     }
     
     private void StopPlayerMovement(bool confirm)
@@ -68,9 +75,9 @@ public class PlayerMovement : MonoBehaviour
         speedModifier += speedModifier;
     }
 
-    private void FlyAway()
+    private void FlyAway(bool state)
     {
-        _isFlyingAway = true;
+        _isFlyingAway = state;
     }
 
     private void ResetHorizontalPosition()
@@ -87,7 +94,11 @@ public class PlayerMovement : MonoBehaviour
     {
         _characterController.Move(Vector3.up * speedModifier * Time.deltaTime);
     }
-      
+    
+    private void ApplyGravity()
+    {
+        _characterController.Move(Vector3.down * gravity * Time.deltaTime);
+    }
 
     private void ProcessHorizontalMovement()
     {

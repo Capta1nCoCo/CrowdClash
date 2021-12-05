@@ -1,5 +1,10 @@
 # CrowdClash
 
+# December/5/2021
+
+- Added New Trap Types
+- Added Jump Pad
+
 # December/4/2021
 
 - Added Win Animation
