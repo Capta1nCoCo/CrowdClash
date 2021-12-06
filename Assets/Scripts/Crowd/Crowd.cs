@@ -33,6 +33,7 @@ public class Crowd : MonoBehaviour
    public CrowdType MyCrowdType { get; private set; }
    
    private List<CrowdMember[]> _allCircles = new List<CrowdMember[]>();
+   private bool _levelCompleted;
 
    private CrowdCounter _crowdCounter;
 
@@ -45,6 +46,7 @@ public class Crowd : MonoBehaviour
       if (type == CrowdType.Player)
       {
          GameEvents.ChangeCrowdSize += ChangeCrowdSize;
+         GameEvents.WinAnimation += OnWinAnimation;
          ChangeCrowdSize(1);
       }
       else
@@ -58,6 +60,7 @@ public class Crowd : MonoBehaviour
       if (type == CrowdType.Player)
       {
          GameEvents.ChangeCrowdSize -= ChangeCrowdSize;
+         GameEvents.WinAnimation -= OnWinAnimation;
       }
    }
 
@@ -115,12 +118,16 @@ public class Crowd : MonoBehaviour
             if (comp.activeSelf)
             {
                comp.SetActive(false);
-               removedMembers++;
+               removedMembers++;                                         
             }
          }
       }
       _crowdCounter.UpdateMemberCounter(-removedMembers);
-   }
+      if (_crowdCounter.EqualsZero() && !_levelCompleted)
+      {
+          KillCrowd();
+      }
+    }
 
    private void ExpandCrowd(int amount)
    {
@@ -140,5 +147,10 @@ public class Crowd : MonoBehaviour
       }
       _crowdCounter.UpdateMemberCounter(addedMembers);
    }
-   
+
+   private void OnWinAnimation()
+   {
+        _levelCompleted = true;
+   }
+
 }

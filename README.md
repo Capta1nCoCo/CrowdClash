@@ -1,5 +1,10 @@
 # CrowdClash
 
+# December/6/2021
+
+- Added 9 Stages
+- Fixed Several Minor Bugs
+
 # December/5/2021
 
 - Added New Trap Types
