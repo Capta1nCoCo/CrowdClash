@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.5
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.13333334, g: 0.19215687, b: 0.34117648, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1171804066}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18642594, g: 0.5973579, b: 0.76775396, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 697099047209034986, guid: d0b2229bd9f2a4c43a792508c24773bf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 697099047209034986, guid: d0b2229bd9f2a4c43a792508c24773bf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2025,6 +2025,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingGate (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770122884789159464, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5091252183423721372, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2095,6 +2099,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingGate (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770122884789159464, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5091252183423721372, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2141,11 +2149,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618667539487435162, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
       propertyPath: amount
-      value: 40
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5618667539487435162, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
       propertyPath: operationSign
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
@@ -2489,6 +2497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingGate (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3770122884789159464, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5091252183423721372, guid: 0f2d68875da62cf43a1b82c0b0afc06d, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -2821,7 +2833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 573336369, guid: 91c187d692df9044fb06ae17e781607e, type: 3}
       propertyPath: horizontalSpeed
-      value: 1.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 129729530030484323, guid: 91c187d692df9044fb06ae17e781607e, type: 3}
       propertyPath: m_IsActive

@@ -302,5 +302,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distance: 2
   horizontal: 1
-  speed: 2
+  speed: 1
   offset: 0

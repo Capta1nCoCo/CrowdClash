@@ -1,5 +1,11 @@
 # CrowdClash
 
+# December/7/2021
+
+- Added Graphics
+- Added WinFX
+- Added Loop Scene Loading
+
 # December/6/2021
 
 - Added 9 Stages

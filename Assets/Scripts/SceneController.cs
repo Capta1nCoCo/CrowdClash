@@ -21,7 +21,7 @@ public class SceneController : MonoBehaviour
         GameEvents.Victory += Victory;
         GameEvents.GameOver += GameOver;
     }
-
+    
     private void OnDestroy()
     {
         GameEvents.Victory -= Victory;
@@ -29,8 +29,15 @@ public class SceneController : MonoBehaviour
     }
 
     public void NextLevel()
-    {
-        SceneManager.LoadScene(_currentSceneIndex + 1);
+    {        
+        if (_currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
+        {
+            SceneManager.LoadScene(0);
+        }
+        else
+        {
+            SceneManager.LoadScene(_currentSceneIndex + 1);
+        }       
     }
     
     public void TryAgain()
