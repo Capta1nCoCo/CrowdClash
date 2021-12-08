@@ -1,5 +1,12 @@
 # CrowdClash
 
+# December/8/2021
+
+- Added EffectManager
+- Added DeathVFX
+- Added Preloader Prototype
+- Changed Win/Lose Screen Background Color
+
 # December/7/2021
 
 - Added Graphics

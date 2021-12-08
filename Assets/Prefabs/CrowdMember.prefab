@@ -128,6 +128,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaterial: {fileID: 2100000, guid: 98a06f576893f44409b6f4355a3ffa30, type: 2}
   playerMaterial: {fileID: 2100000, guid: 6e5568b7d594e124dae81335091d836b, type: 2}
+  splatSprites:
+  - {fileID: 1637851369351958949, guid: 6a5965c22580f214db626ab01e631a99, type: 3}
+  - {fileID: 1637851369351958949, guid: 89dfe777845dceb47892954ef6a2b676, type: 3}
+  deathParticles:
+  - {fileID: 19800000, guid: 88920d564667ba74990f8d14eed0dafa, type: 3}
+  - {fileID: 19800000, guid: bc98890f6028f444eaa7789bde5e2eeb, type: 3}
   body: {fileID: 5389507221152863986}
 --- !u!95 &1903496270515800435
 Animator:
