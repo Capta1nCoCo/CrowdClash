@@ -12,9 +12,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float horizontalSpeed = 1f;
     [SerializeField] private float gravity = 5f;
 
+    private const float _xBound = 0.917f;
+    private const float _widthPerUnit = 0.07f;
+    private float _xPadding;
+
     private bool _stoppedMoving;
     private bool _isUncontrollable;
     private bool _isFlyingAway;
+    private bool _isClamped;
     private float _groundedPos;
 
     private Touch _touch;
@@ -25,15 +30,18 @@ public class PlayerMovement : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _stoppedMoving = false;
         _groundedPos = transform.position.y;
+        _xPadding = _xBound;
 
         GameEvents.StopPlayerMovement += StopPlayerMovement;
         GameEvents.FlyAway += FlyAway;
+        GameEvents.AdjustPlayerWidth += AdjustPlayerWidth;
     }
     
     private void OnDestroy()
     {
         GameEvents.StopPlayerMovement -= StopPlayerMovement;
         GameEvents.FlyAway -= FlyAway;
+        GameEvents.AdjustPlayerWidth -= AdjustPlayerWidth;
     }
 
     private void FixedUpdate()
@@ -121,11 +129,67 @@ public class PlayerMovement : MonoBehaviour
         movement = Vector3.ClampMagnitude(movement, horizontalSpeed);
 
         //movement.y = gravity;
-        
-        movement *= Time.deltaTime;
+        ClampCrowdMovement(touch);
+
+        if (!_isClamped)
+        {
+            movement *= Time.deltaTime;
+        }
+        else
+        {
+            movement *= 0;
+        }
+        //movement *= Time.deltaTime;
         movement = transform.TransformDirection(movement);
         _characterController.Move(movement);
     }
 
-    
+    private void ClampCrowdMovement(Touch touch)
+    {
+        if (transform.position.x > 0)
+        {
+            ClampRight(touch);
+        }
+        else
+        {
+            ClampLeft(touch);
+        }
+    }
+
+    private void ClampRight(Touch touch)
+    {
+        if (transform.position.x > _xPadding && touch.deltaPosition.x > 0)
+        {
+            _isClamped = true;
+        }
+        else if (touch.deltaPosition.x < 0)
+        {
+            _isClamped = false;
+        }
+    }
+
+
+    private void ClampLeft(Touch touch)
+    {
+        if (transform.position.x < -_xPadding && touch.deltaPosition.x < 0)
+        {
+            _isClamped = true;
+        }
+        else if (touch.deltaPosition.x > 0)
+        {
+            _isClamped = false;
+        }
+    }
+
+    private void AdjustPlayerWidth(int units)
+    {        
+        if (units == 0)
+        {
+            _xPadding = _xBound;
+        }
+        else
+        {
+            _xPadding -= _widthPerUnit * units;
+        }        
+    }
 }

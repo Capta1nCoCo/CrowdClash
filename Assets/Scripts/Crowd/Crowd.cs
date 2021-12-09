@@ -171,7 +171,27 @@ public class Crowd : MonoBehaviour
         var crowdSize = _crowdCounter.GetMemberCounter();
         ShrinkCrowd(crowdSize);
         ExpandCrowd(crowdSize);
-
+        CalculateCrowdWidth();
         _isReGrouping = false;
+   }
+
+   private void CalculateCrowdWidth()
+   {
+       var widthUnits = 0;
+       foreach (var circle in _allCircles)
+       {
+           foreach (var crowdMember in circle)
+           {
+               var comp = crowdMember.gameObject;                
+               if (comp.activeSelf)
+               {                    
+                   widthUnits++;
+                   break;
+               }
+           }
+       }
+        
+       GameEvents.AdjustPlayerWidth(0);
+       GameEvents.AdjustPlayerWidth(widthUnits - 1);
    }
 }

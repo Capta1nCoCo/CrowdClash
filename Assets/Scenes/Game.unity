@@ -594,6 +594,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleGates (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 9036212797729413975, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
 --- !u!1001 &849971622
@@ -1097,6 +1101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleGates (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 9036212797729413975, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
 --- !u!1001 &1481031314
@@ -1165,6 +1173,10 @@ PrefabInstance:
     - target: {fileID: 9036212797729413975, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
       propertyPath: m_Name
       value: DoubleGates (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9036212797729413975, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
@@ -1277,7 +1289,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1583472785
 Transform:
   m_ObjectHideFlags: 0
@@ -2474,7 +2486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5535270925858037927, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
       propertyPath: amount
-      value: 2
+      value: 204
       objectReference: {fileID: 0}
     - target: {fileID: 9036212797729413960, guid: cfbce069f5ef8a54fbd925c312078369, type: 3}
       propertyPath: m_RootOrder

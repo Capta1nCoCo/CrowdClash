@@ -2,6 +2,7 @@
 
 # December/9/2021
 
+- Adjusted Horizontal Movement Clamping To Crowd Width
 - Fixed Several Crowd Behaviour BUGs
 - Fixed Level Recycling BUG
 - Added Delay Before GameOver PopUp

@@ -18,4 +18,6 @@ public class GameEvents
     public static Action<bool> FlyAway;
 
     public static Action ReGroupCrowd;
+
+    public static Action<int> AdjustPlayerWidth;
 }
