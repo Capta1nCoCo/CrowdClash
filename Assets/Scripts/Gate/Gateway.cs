@@ -39,6 +39,7 @@ public class Gateway : MonoBehaviour
             gateKeeper.DeactivateGates();
         }
         GameEvents.ChangeCrowdSize(_amountAfterCalculation);
+        GameEvents.ReGroupCrowd();
     }
 
     private void AdjustOperationSign()

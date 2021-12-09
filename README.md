@@ -1,5 +1,11 @@
 # CrowdClash
 
+# December/9/2021
+
+- Fixed Several Crowd Behaviour BUGs
+- Fixed Level Recycling BUG
+- Added Delay Before GameOver PopUp
+
 # December/8/2021
 
 - Added EffectManager

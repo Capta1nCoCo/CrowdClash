@@ -16,4 +16,6 @@ public class GameEvents
     public static Action WinAnimation;
 
     public static Action<bool> FlyAway;
+
+    public static Action ReGroupCrowd;
 }

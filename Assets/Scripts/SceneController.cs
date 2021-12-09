@@ -53,6 +53,12 @@ public class SceneController : MonoBehaviour
     
     private void GameOver()
     {
+        StartCoroutine(ShowLoseScreenWithDelay());
+    }
+
+    private IEnumerator ShowLoseScreenWithDelay()
+    {
+        yield return new WaitForSeconds(0.5f);
         loseScreen.SetActive(true);
         Time.timeScale = 0;
     }

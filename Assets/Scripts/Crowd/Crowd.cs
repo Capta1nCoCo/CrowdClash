@@ -34,6 +34,7 @@ public class Crowd : MonoBehaviour
    
    private List<CrowdMember[]> _allCircles = new List<CrowdMember[]>();
    private bool _levelCompleted;
+   private bool _isReGrouping;
 
    private CrowdCounter _crowdCounter;
 
@@ -47,6 +48,7 @@ public class Crowd : MonoBehaviour
       {
          GameEvents.ChangeCrowdSize += ChangeCrowdSize;
          GameEvents.WinAnimation += OnWinAnimation;
+         GameEvents.ReGroupCrowd += ReGroup;
          ChangeCrowdSize(1);
       }
       else
@@ -61,6 +63,7 @@ public class Crowd : MonoBehaviour
       {
          GameEvents.ChangeCrowdSize -= ChangeCrowdSize;
          GameEvents.WinAnimation -= OnWinAnimation;
+         GameEvents.ReGroupCrowd -= ReGroup;
       }
    }
 
@@ -122,7 +125,12 @@ public class Crowd : MonoBehaviour
             }
          }
       }
-      _crowdCounter.UpdateMemberCounter(-removedMembers);
+
+      if (!_isReGrouping)
+      {
+          _crowdCounter.UpdateMemberCounter(-removedMembers);
+      }
+        
       if (_crowdCounter.EqualsZero() && !_levelCompleted)
       {
           KillCrowd();
@@ -145,12 +153,25 @@ public class Crowd : MonoBehaviour
             }
          }
       }
-      _crowdCounter.UpdateMemberCounter(addedMembers);
-   }
 
+      if (!_isReGrouping)
+      {
+          _crowdCounter.UpdateMemberCounter(addedMembers);
+      }        
+   }
+   
    private void OnWinAnimation()
    {
         _levelCompleted = true;
    }
 
+   private void ReGroup()
+   {
+        _isReGrouping = true;
+        var crowdSize = _crowdCounter.GetMemberCounter();
+        ShrinkCrowd(crowdSize);
+        ExpandCrowd(crowdSize);
+
+        _isReGrouping = false;
+   }
 }
