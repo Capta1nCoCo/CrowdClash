@@ -32,7 +32,7 @@ public class SceneController : MonoBehaviour
     {        
         if (_currentSceneIndex == SceneManager.sceneCountInBuildSettings - 1)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
         else
         {

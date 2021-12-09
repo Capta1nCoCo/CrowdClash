@@ -40,7 +40,14 @@ public class WinAnimation : MonoBehaviour
         _crowdCounter.RemoveCounterText();
         _cameraFollow.ChangeCameraAngle();
 
-        StartCoroutine(BuildCrowdPyramid());       
+        if (_crowdCounter.GetMemberCounter() == 1)
+        {
+            GameEvents.StopPlayerMovement(false);
+        }
+        else
+        {
+            StartCoroutine(BuildCrowdPyramid());
+        }               
     }
 
     private IEnumerator BuildCrowdPyramid()
