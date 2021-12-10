@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
 	private void LateUpdate () 
 	{
 		Vector3 targetPos = player.position + _offset;
-		targetPos.x = _xCameraPos;
+		targetPos.x = _xCameraPos + player.position.x / 3;
 		transform.position = targetPos;		
 	}
 

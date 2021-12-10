@@ -1,5 +1,10 @@
 # CrowdClash
 
+# December/10/2021
+
+- Added Horizontal Camera Movement
+- EnemyZone: Increased Horizontal Trigger Collidrer Size
+
 # December/9/2021
 
 - Adjusted Horizontal Movement Clamping To Crowd Width

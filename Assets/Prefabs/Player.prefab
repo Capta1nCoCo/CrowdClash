@@ -581,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedModifier: 2
-  horizontalSpeed: 1.1
+  horizontalSpeed: 1.3
   gravity: 3
 --- !u!114 &5037952940501675513
 MonoBehaviour:
