@@ -2,6 +2,8 @@
 
 # December/10/2021
 
+- Added Start Screen
+- Increased Movement Speed for 20% (both directions)
 - Added Horizontal Camera Movement
 - EnemyZone: Increased Horizontal Trigger Collidrer Size
 
