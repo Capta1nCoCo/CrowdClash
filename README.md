@@ -2,6 +2,7 @@
 
 # December/10/2021
 
+- Fixed BUG: StartScreen Freeze
 - Added Start Screen
 - Increased Movement Speed for 20% (both directions)
 - Added Horizontal Camera Movement

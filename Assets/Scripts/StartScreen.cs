@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StartScreen : MonoBehaviour, IDragHandler
+public class StartScreen : MonoBehaviour
 {
     private void Start()
     {
-        Time.timeScale = 0;
-    }
-    
-    public void OnDrag(PointerEventData eventData)
-    {
-        Time.timeScale = 1;
-        gameObject.SetActive(false);
+        GameEvents.StopPlayerMovement(true);
     }
 
+    private void Update()
+    {
+        if (Input.touchCount > 0)
+        {
+            var touch = Input.GetTouch(0);
+
+            if (touch.phase == TouchPhase.Moved)
+            {
+                gameObject.SetActive(false);
+                GameEvents.StopPlayerMovement(false);
+            }
+        }
+    }
 }
