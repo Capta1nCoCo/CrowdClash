@@ -37,6 +37,7 @@ public class WinAnimation : MonoBehaviour
         GameEvents.StopPlayerMovement(true);
         _playerMovement.StopPlayersControl();
         _memberAmount = _crowdCounter.GetMemberCounter();
+        AddMemberAmountToScore();
         _crowdCounter.RemoveCounterText();
         _cameraFollow.ChangeCameraAngle();
 
@@ -48,6 +49,12 @@ public class WinAnimation : MonoBehaviour
         {
             StartCoroutine(BuildCrowdPyramid());
         }               
+    }
+
+    private void AddMemberAmountToScore()
+    {
+        var currentScore = PlayerPrefs.GetInt("score");
+        PlayerPrefs.SetInt("score", currentScore + _memberAmount);
     }
 
     private IEnumerator BuildCrowdPyramid()

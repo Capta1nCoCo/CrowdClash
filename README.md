@@ -1,7 +1,8 @@
 # CrowdClash
 
-# December/10/2021
+# December/11/2021
 
+- Added Score Display
 - Added Level Counter
 - Added Safe Area Fitter
 
