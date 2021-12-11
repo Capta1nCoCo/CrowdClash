@@ -2,6 +2,11 @@
 
 # December/10/2021
 
+- Added Level Counter
+- Added Safe Area Fitter
+
+# December/10/2021
+
 - Reduced Jump Duration for 20%
 - Fixed BUG: StartScreen Freeze
 - Added Start Screen
